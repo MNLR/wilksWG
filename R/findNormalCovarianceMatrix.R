@@ -4,7 +4,10 @@
 #' 
 findNormalCovarianceMatrix <- function(correlations, transition.probabilities,
                                        max.error = 0.001, max.iter = 25,
-                                       accuracy = 1000000, parallelize = TRUE,
+                                       debug = FALSE,
+                                       accuracy = 1000000, 
+                                       parallelize = TRUE,
+                                       cluster.type = "PSOCK",
                                        n.cores = NULL) {
   unraveled <- c(correlations)[c(t(upper.tri(correlations)))]
   
@@ -27,13 +30,14 @@ findNormalCovarianceMatrix <- function(correlations, transition.probabilities,
     )
   if (parallelize) {
     cl <-
-      parallelHandler(type = "PSOCK", n.cores = n.cores,
-                      PSOCK.funcExports.list = list(findNormalCorrelation),
-                      PSOCK.varExports.list = list(lapply.input,
-                                                   transition.probabilities,
-                                                   max.iter,
-                                                   max.error,
-                                                   accuracy
+      parallelHandler(type = cluster.type, n.cores = n.cores,
+                      PSOCK.funcExports.list = namedList(findNormalCorrelation, 
+                                                         mvrnorm),
+                      PSOCK.varExports.list = namedList(lapply.input,
+                                                        transition.probabilities,
+                                                        max.iter,
+                                                        max.error,
+                                                        accuracy
                       ),
                       cl = NULL
       )
@@ -49,7 +53,8 @@ findNormalCovarianceMatrix <- function(correlations, transition.probabilities,
                             p11e2 = transition.probabilities[2,st[2]],
                             max.iter = max.iter,
                             max.error = max.error,
-                            accuracy = accuracy
+                            accuracy = accuracy,
+                            debug = debug
       )
     )
   }

@@ -3,7 +3,7 @@
 #' @author M.N. Legasa
 #' @export
 
-measureMatrix <- function( data , measure = "phiCoef", 
+measureMatrix <- function( data , measure = "cor", 
                            mark.diagonal.na = TRUE, ... ){
   if (class(data) == "measureMatrix"){
     return(data)
@@ -51,7 +51,10 @@ measureVector <- function(data, station, measure = "phiCoef", ... ){  #remove.na
 }
 
 
-phiCoef <- function( data, st1, st2, remove.na =  TRUE, evidence.nodes = NULL, evidence = NULL ){
+phiCoef <- function( data, st1, st2,
+                     remove.na =  TRUE,
+                     evidence.nodes = NULL,
+                     evidence = NULL ){
   
   if (length(evidence.nodes) != length(evidence)) {stop("Provide a single evidence for every node.")}
   Data <- filterData(data, st1, st2, remove.na, evidence.nodes, evidence)
