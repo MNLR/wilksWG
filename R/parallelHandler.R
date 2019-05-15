@@ -12,7 +12,8 @@
 parallelHandler <- function(type, n.cores = NULL,
                             PSOCK.funcExports.list = list(),
                             PSOCK.varExports.list = list(),
-                            cl = NULL){
+                            cl = NULL
+                            ){
   
   if (is.null(cl)){   # Initiate cluster, if not already
     if ( is.null(n.cores) ){
@@ -24,11 +25,10 @@ parallelHandler <- function(type, n.cores = NULL,
   }
   
   if (type == "PSOCK") {
-    print("Exporting data to PSOCK cluster... Exported data:")
+    print("Exporting data to PSOCK cluster...")
     PSOCK.exports <- c(PSOCK.funcExports.list, 
                        PSOCK.varExports.list)
     list2env(PSOCK.exports, envir = environment())
-    print(names(PSOCK.exports))
     clusterExport(cl = cl, varlist =  names(PSOCK.exports), 
                   envir = environment())
   }

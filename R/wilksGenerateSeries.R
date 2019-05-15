@@ -2,18 +2,26 @@
 #' @author M.N. Legasa
 #' @export
 
-wilksGenerateSeries <- function(wilks, n, initial = NULL, initial.date = NULL,
+wilksGenerateSeries <- function(wilks, n, initial = NULL,
+                                initial.date = NULL,
                                 tol = 10^(-2)){
-  return(
-    seriesGenerator(n, wilks$normal.covariances, wilks$transition.probabilities,
-                    initial = initial, initial.date = initial.date,
-                    tol = tol, samples = wilks$samples)
+
+  if (is.null(initial.date)) initial.date <- wilks$dates$start
+  tbr <-  seriesGenerator(n, wilks$normal.covariances,
+                          wilks$transition.probabilities,
+                          initial = initial, initial.date = initial.date,
+                          tol = tol, samples = wilks$samples
   )
+  if (!(is.null(wilks$stations.id))) colnames(tbr) <- wilks$stations.id
+  return(tbr)
 }
 
 
-seriesGenerator <- function(n, normal.covariances, transition.probabilities,
-                            initial = NULL, initial.date = NULL, tol = 10^-6,
+seriesGenerator <- function(n, normal.covariances,
+                            transition.probabilities,
+                            initial = NULL, 
+                            initial.date = NULL, 
+                            tol = 10^-6,
                             samples = NULL){
   series <- pnorm(mvrnorm(n, Sigma=normal.covariances,
                           mu = rep(0,ncol(transition.probabilities)), tol = tol
