@@ -1,0 +1,20 @@
+Package: wilksWG
+Depends:
+  MASS,
+  parallel,
+  lubridate,
+  pbapply,
+  stats
+Suggests:
+  loadeR
+Type: Package
+Title: Wilks Weather Generator
+Version: 1.0.0
+Date: 2019-13-05
+Authors@R: as.person("Mikel N. Legasa <legasam@unican.es> [ctb, cre]")
+BugReports: https://github.com/MNLR/wilksWG/issues
+Description: Wilks type Weather Generator.
+Encoding: UTF-8
+License: MIT + file LICENSE
+LazyData: true
+RoxygenNote: 6.1.1
