@@ -1,7 +1,6 @@
 #' @title Find Normal Covariance Matrix
 #' @author M.N. Legasa
-#' @export
-#' 
+
 findNormalCovarianceMatrix <- function(correlations, transition.probabilities,
                                        max.error = 0.001, max.iter = 25,
                                        debug = FALSE,

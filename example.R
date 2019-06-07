@@ -2,18 +2,18 @@
 load(file = "data/data.rda")
 
 # Train model:
-wilks.model <-  wilksTrain(data = data, accuracy = 100000,
-                           max.error = 0.05)
+wilks.model <-  wilksTrain(data = data)
 
-# More accurate model, requieres much more time, uses parallel to speed up computation:
+# More accurate model, requires much more time,
+# uses parallel to speed up computation:
 wilks.model.2 <-  wilksTrain(data = data, 
-                             accuracy = 1000000,
+                             accuracy = 10000000,
                              max.error = 0.01,
                              parallelize = TRUE, 
                              n.cores = NULL 
                             )
 
-# Generate series:
+# Generate series with the model:
 wilksGenerateSeries(wilks = wilks.model.2, 
                     n = 100
                     )

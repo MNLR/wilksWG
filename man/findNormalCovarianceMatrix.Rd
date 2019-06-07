@@ -5,8 +5,9 @@
 \title{Find Normal Covariance Matrix}
 \usage{
 findNormalCovarianceMatrix(correlations, transition.probabilities,
-  max.error = 0.001, max.iter = 25, accuracy = 1e+06,
-  parallelize = TRUE, n.cores = NULL)
+  max.error = 0.001, max.iter = 25, debug = FALSE,
+  accuracy = 1e+06, parallelize = TRUE, cluster.type = "PSOCK",
+  n.cores = NULL)
 }
 \description{
 Find Normal Covariance Matrix

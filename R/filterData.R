@@ -1,7 +1,6 @@
 #' @title Filter Data according to condition evidence on evidence.nodes
 #' @param type data
 #' @author M.N. Legasa
-#' @export
 
 
 

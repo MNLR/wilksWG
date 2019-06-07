@@ -1,6 +1,5 @@
 #' @title Find Transition Probabilities
 #' @author M.N. Legasa
-#' @export
 
 findTransitionProbabilities <- function(day0, day1) {
   aux <- 2*toOperableMatrix(day1) - toOperableMatrix(day0)

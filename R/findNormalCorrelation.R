@@ -1,7 +1,6 @@
 #' @title Find normal correlation
 #' @param r correlation
 #' @author M.N. Legasa
-#' @export
 
 
 findNormalCorrelation <- function( r , p01e1, p11e1, p01e2, p11e2,

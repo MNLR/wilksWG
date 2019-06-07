@@ -1,6 +1,5 @@
 #' @title Convert Valid Object to Operable Matrix
 #' @author M.N. Legasa
-#' @export
 
 
 toOperableMatrix <- function(data) {

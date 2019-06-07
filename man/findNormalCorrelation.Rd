@@ -5,7 +5,7 @@
 \title{Find normal correlation}
 \usage{
 findNormalCorrelation(r, p01e1, p11e1, p01e2, p11e2, max.error = 0.001,
-  max.iter = 25, accuracy = 1e+06)
+  max.iter = 25, accuracy = 1e+06, debug = FALSE)
 }
 \arguments{
 \item{r}{correlation}

@@ -1,0 +1,12 @@
+#' Example dataset with 11 meteorological stations with discrete (absence/presence of precipitation)
+#'  values. It contains 2760 (30x92) days from JJA season.
+#'
+#' @format A named list with 5 elements:
+#' \describe{
+#'   \item{Variable}{Description of de Variable}
+#'   \item{Data}{matrix with the data}
+#'   \item{xyCoords}{Stations location}
+#'   \item{Dates}{Dates of the observations}
+#'   \item{Metadata}{Metadata}
+#' }
+"data"

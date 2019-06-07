@@ -7,7 +7,6 @@
 #'   It requires the each variable name to be specified in the list names
 #' @author M.N. Legasa
 #' @importFrom parallel detectCores makeCluster
-#' @export
 
 parallelHandler <- function(type, n.cores = NULL,
                             PSOCK.funcExports.list = list(),

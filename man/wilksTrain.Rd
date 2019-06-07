@@ -4,8 +4,33 @@
 \alias{wilksTrain}
 \title{Train Complete Wilks Model}
 \usage{
-wilksTrain(data, accuracy = 1e+07, max.error = 0.001, max.iter = 20,
-  parallelize = TRUE, n.cores = NULL)
+wilksTrain(data, dates = NULL, stations.id = NULL, accuracy = 1e+06,
+  max.error = 0.01, max.iter = 20, debug = FALSE,
+  parallelize = FALSE, n.cores = NULL)
+}
+\arguments{
+\item{data}{grid type object from loadeR. It should be a named list with at least $Data, a binary matrix with the data}
+
+\item{dates}{A vector of dates corresponding to the \code{data} in case it is a matrix. 
+It should have length(dates) = nrow(data)}
+
+\item{stations.id}{A vector of station names corresponding to the \code{data} in case it is a matrix. 
+It should have length(stations.id) = ncol(data)}
+
+\item{accuracy}{Number of instances of the series that will be generated during each simulation while finding 
+normal correlation value}
+
+\item{max.error}{Iterative process will stop when it reaches this error in correlation between pairs or at
+\code{max.iter}}
+
+\item{max.iter}{Maximum number of iterations during the normal correlation value search.}
+
+\item{debug}{If set to \code{TRUE} information about the iterative process will be displayed. Does not work when 
+\code{parallelize} is set to \code{TRUE}}
+
+\item{n.cores}{Number of processes that will be created for parallel computation. Set to n.cores()-1 by default.}
+
+\item{parallel}{If set to \code{TRUE}, parallel computation will be used.}
 }
 \description{
 Train Complete Wilks Model

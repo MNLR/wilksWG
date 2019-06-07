@@ -1,6 +1,5 @@
 #' @title Transition Probability
 #' @author M.N. Legasa
-#' @export
 
 transitionProbability <- function(ts,  dates){
   dates <- as.Date(dates)

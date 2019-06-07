@@ -4,11 +4,19 @@
 \alias{parallelHandler}
 \title{Parallelization Cluster Starter}
 \usage{
-parallelHandler(type, n.cores, PSOCK.funcExports.list = list(),
+parallelHandler(type, n.cores = NULL, PSOCK.funcExports.list = list(),
   PSOCK.varExports.list = list(), cl = NULL)
 }
 \arguments{
 \item{type}{Cluster type, either FORK or PSOCK.}
+
+\item{n.cores}{Number of cores.}
+
+\item{PSOCK.funcExports.list}{For PSOCK type cluster, named list of functions to be exported
+It requires the each function name to be specified in the list names}
+
+\item{PSOCK.varExports.list}{For PSOCK type cluster, named list of variables to be exported
+It requires the each variable name to be specified in the list names}
 }
 \description{
 Parallelization Cluster Starter
