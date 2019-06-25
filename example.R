@@ -10,7 +10,8 @@ wilks.model.2 <-  wilksTrain(data = data,
                              accuracy = 10000000,
                              max.error = 0.01,
                              parallelize = TRUE, 
-                             n.cores = NULL 
+                             n.cores = NULL, 
+                             
                             )
 
 # Generate series with the model:

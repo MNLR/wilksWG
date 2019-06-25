@@ -27,20 +27,20 @@ findNormalCovarianceMatrix <- function(correlations, transition.probabilities,
     mapply(FUN = function(cor, sts) {return(c(cor, as.numeric(sts)))} ,
            unraveled, unraveled.stations.index , SIMPLIFY = FALSE
     )
-  if (parallelize) {
-    cl <-
-      parallelHandler(type = cluster.type, n.cores = n.cores,
-                      PSOCK.funcExports.list = namedList(findNormalCorrelation, 
-                                                         mvrnorm),
-                      PSOCK.varExports.list = namedList(lapply.input,
-                                                        transition.probabilities,
-                                                        max.iter,
-                                                        max.error,
-                                                        accuracy
-                      ),
+
+  cl <- parallelHandler(parallelize = parallelize,
+                        type = cluster.type, 
+                        n.cores = n.cores, 
+                        PSOCK.Exports.list = namedList(findNormalCorrelation, 
+                                                       mvrnorm,
+                                                       lapply.input,
+                                                       transition.probabilities,
+                                                       max.iter,
+                                                       max.error,
+                                                       accuracy
+                      ), 
                       cl = NULL
-      )
-  } else {cl <- NULL}
+        )
   print("Finding correlations...")
   ncorrelations <- pbsapply(cl = cl, lapply.input, FUN =  function(input_){
     st <- input_[2:3]

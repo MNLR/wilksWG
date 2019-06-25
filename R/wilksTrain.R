@@ -14,12 +14,13 @@
 #' \code{parallelize} is set to \code{TRUE}
 #' @param parallel If set to \code{TRUE}, parallel computation will be used.
 #' @param n.cores Number of processes that will be created for parallel computation. Set to n.cores()-1 by default.
+#' @param cluster.type Either "PSOCK" (default) or "FORK". Check parallel package for the details
 #' @export
 
 wilksTrain <- function(data, dates = NULL, stations.id = NULL,
                        accuracy = 1000000, max.error = 0.01,
                        max.iter = 20, debug = FALSE,
-                       parallelize = FALSE, n.cores = NULL){
+                       parallelize = FALSE, n.cores = NULL, cluster.type = "PSOCK"){
   data <- handleData(data, dates = dates, stations.id = stations.id)
   print("Computing transition probabilites...")
   transition.probabilities <- apply(data$data, MARGIN = 2,
@@ -36,7 +37,8 @@ wilksTrain <- function(data, dates = NULL, stations.id = NULL,
                                max.iter = max.iter,
                                debug = debug,
                                parallelize = parallelize,
-                               n.cores = n.cores
+                               n.cores = n.cores,
+                               cluster.type = cluster.type
                                )
   print("Done")
   tbr <-
